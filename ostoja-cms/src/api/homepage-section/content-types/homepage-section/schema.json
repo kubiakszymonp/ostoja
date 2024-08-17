@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "homepage_sections",
+  "info": {
+    "singularName": "homepage-section",
+    "pluralName": "homepage-sections",
+    "displayName": "HomepageSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

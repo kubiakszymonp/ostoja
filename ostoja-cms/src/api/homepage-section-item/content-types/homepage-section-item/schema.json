@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "homepage_section_items",
+  "info": {
+    "singularName": "homepage-section-item",
+    "pluralName": "homepage-section-items",
+    "displayName": "HomepageSectionItem",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}

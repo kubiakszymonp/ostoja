@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  nextjs:
+    build: ./ostoja-strona/
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+
+  strapi:
+    build: ./ostoja-cms/
+    ports:
+      - "1337:1337"
+    env_file: ./ostoja-cms/.env
+    environment:
+        NODE_ENV: production
+    volumes:
+      - ./ostoja-cms/config:/opt/app/config
+      - ./ostoja-cms/src:/opt/app/src
+      - ./ostoja-cms/package.json:/opt/package.json
+      - ./ostoja-cms/yarn.lock:/opt/yarn.lock
+      - ./ostoja-cms/.env:/opt/app/.env
+      - ./ostoja-cms/public/uploads:/opt/app/public/uploads
+      - ./ostoja-cms/data:/app/.tmp  # Persist the SQLite database
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - /root/certs:/etc/nginx/certs:ro
+    depends_on:
+      - nextjs
+      - strapi
