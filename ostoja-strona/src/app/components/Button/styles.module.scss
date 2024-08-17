@@ -1,0 +1,13 @@
+.c {
+  background: #fc934c;
+  padding-block: 0.8rem;
+  padding-inline: 3rem;
+  color: white;
+  font-weight: 500;
+  border-radius: 10px;
+  font-size: 1.5rem;
+
+  &:hover {
+    background-color: var(--main-orange-hover);
+  }
+}

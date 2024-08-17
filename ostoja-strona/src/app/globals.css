@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: #313131;
+  --main-yellow: #ffde59;
+  --main-orange: #fc934c;
+  --main-orange-hover: #e48445;
+  --secondary-orange: #ffbc5b;
+}
+
+body {
+  color: var(--foreground-rgb);
+  font-family: "DM Sans", "Times New Roman", Times, serif;
+  background-color: #f1f1f1;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

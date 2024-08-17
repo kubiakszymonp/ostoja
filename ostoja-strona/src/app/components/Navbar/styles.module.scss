@@ -1,0 +1,52 @@
+$navbar-font-size: 1.5rem;
+$navbar-gap: 5rem;
+$navbar-margin-block: 2rem;
+$navbar-link-hover-color: var(--main-orange-hover);
+
+.navbarContainer {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+
+  .navbarLinks {
+    font-weight: 400;
+    font-size: $navbar-font-size;
+    display: flex;
+    gap: $navbar-gap;
+    margin-block: $navbar-margin-block;
+
+    .navbarLinkWrapper {
+      position: relative;
+
+      .navbarLink {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -20%;
+          height: 4px;
+          width: 0%;
+          left: 5%;
+          background-color: $navbar-link-hover-color;
+          transition: 0.5s ease all 0.3s;
+        }
+      }
+
+      &:hover,
+      &__active {
+        .navbarLink::after {
+          width: 90%;
+          transition: 0.3s ease all;
+        }
+      }
+    }
+  }
+}
