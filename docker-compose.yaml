@@ -8,9 +8,8 @@ services:
     environment:
       NODE_ENV: production
     depends_on:
-      strapi:
-        condition: service_healthy
-    command: sh -c "yarn build && yarn start"
+      - strapi
+    command: "yarn build && yarn start"
 
   strapi:
     build: ./ostoja-cms/
@@ -27,11 +26,6 @@ services:
       - ./ostoja-cms/.env:/opt/app/.env
       - ./ostoja-cms/public/uploads:/opt/app/public/uploads
       - ./ostoja-cms/data:/app/.tmp  # Persist the SQLite database
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:1337"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
 
   nginx:
     image: nginx:alpine
