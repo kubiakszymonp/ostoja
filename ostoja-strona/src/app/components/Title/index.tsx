@@ -4,13 +4,19 @@ import { Button } from "../Button";
 import cx from "classnames";
 import { motion } from "framer-motion";
 import Media from "../Media";
+import React from "react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
 };
 
-export const Title = () => {
+interface ITitleProps {
+  title: string;
+  description: string;
+}
+
+export const Title: React.FC<ITitleProps> = ({ title, description }) => {
   return (
     <div>
       <div className={cx(styles.container, "shadow-lg")}>
@@ -62,10 +68,7 @@ export const Title = () => {
               },
             }}
           >
-            Wspólnota, która łączy osoby niepełnosprawne, ich opiekunów z
-            Bogiem, tworząc więzi oparte na wzajemnym wsparciu i duchowej
-            bliskości. Razem budujemy relacje, które przynoszą nadzieję i radość
-            przez cały rok.
+            {description}
           </motion.h6>
 
           <motion.div
@@ -80,9 +83,7 @@ export const Title = () => {
                 transition: { duration: 0.3, delay: 0.8 },
               },
             }}
-          >
-            <Button>Czytaj więcej</Button>
-          </motion.div>
+          ></motion.div>
 
           <div className={styles.galleryContainer}></div>
         </div>

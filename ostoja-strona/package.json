@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-types": "openapi-generator-cli generate -i src/api/schema.json -g typescript-fetch -o src/api/generated --skip-validate-spec"
   },
   "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.13.4",
     "@types/opentype.js": "^1.3.8",
     "classnames": "^2.5.1",
     "framer-motion": "^11.3.24",

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
   --foreground-rgb: #313131;
   --main-yellow: #ffde59;
@@ -12,7 +14,7 @@
 
 body {
   color: var(--foreground-rgb);
-  font-family: "DM Sans", "Times New Roman", Times, serif;
+  font-family: var(--dmSans), "Times New Roman", Times, serif;
   background-color: #f1f1f1;
 }
 

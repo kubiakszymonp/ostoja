@@ -3,7 +3,7 @@ $primary-color: rgba(255, 222, 89, 1);
 $secondary-color: rgba(255, 222, 89, 0.8);
 $text-shadow-color: #ffffff83;
 $box-shadow-color: rgba(255, 255, 255, 0.589);
-$font-title: "Permanent Marker";
+$font-title: var(--permanentMarker);
 $breakpoint-mobile: 768px;
 
 // Mixins
@@ -18,24 +18,15 @@ $breakpoint-mobile: 768px;
   }
 }
 
-// Styles
-.gallery {
-  max-height: 600px;
-  width: 100%;
-}
-
-.image {
-  width: 100%;
-}
-
 .container {
-  padding: 5rem 0 4rem 0;
+  padding: 5rem 0 5rem 0;
   background: linear-gradient(180deg, $primary-color 20%, $secondary-color),
     url(/images/background.jpg);
   background-size: cover;
   background-position-y: bottom;
+  background-position-x: center;
   position: relative;
-  
+
   @media (max-width: $breakpoint-mobile) {
     padding: 2rem 0 2rem 0;
   }

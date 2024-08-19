@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 export const Footer = () => {
   return (
-    <footer className={cx(styles.footer, "transition duration-500")}>
+    <footer className={cx(styles.footer, "transition duration-500")} id="contact">
       <div className={styles.footerContainer}>
         <div className={styles.footerContent}>
           <div className={styles.socialMedia}>
