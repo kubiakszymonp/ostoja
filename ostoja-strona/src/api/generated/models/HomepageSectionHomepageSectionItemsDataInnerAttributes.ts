@@ -13,12 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
-import type { HomepageSectionHomepageSectionItems } from './HomepageSectionHomepageSectionItems';
+import type { HomepageSectionHomepageSectionItemsDataInnerAttributesHomepageSection } from './HomepageSectionHomepageSectionItemsDataInnerAttributesHomepageSection';
 import {
-    HomepageSectionHomepageSectionItemsFromJSON,
-    HomepageSectionHomepageSectionItemsFromJSONTyped,
-    HomepageSectionHomepageSectionItemsToJSON,
-} from './HomepageSectionHomepageSectionItems';
+    HomepageSectionHomepageSectionItemsDataInnerAttributesHomepageSectionFromJSON,
+    HomepageSectionHomepageSectionItemsDataInnerAttributesHomepageSectionFromJSONTyped,
+    HomepageSectionHomepageSectionItemsDataInnerAttributesHomepageSectionToJSON,
+} from './HomepageSectionHomepageSectionItemsDataInnerAttributesHomepageSection';
 import type { HomepageBackgroundImageDataAttributesFolderDataAttributesParent } from './HomepageBackgroundImageDataAttributesFolderDataAttributesParent';
 import {
     HomepageBackgroundImageDataAttributesFolderDataAttributesParentFromJSON,
@@ -29,72 +29,79 @@ import {
 /**
  * 
  * @export
- * @interface HomepageSection
+ * @interface HomepageSectionHomepageSectionItemsDataInnerAttributes
  */
-export interface HomepageSection {
+export interface HomepageSectionHomepageSectionItemsDataInnerAttributes {
     /**
      * 
      * @type {string}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionHomepageSectionItemsDataInnerAttributes
      */
     title?: string;
     /**
      * 
-     * @type {HomepageSectionHomepageSectionItems}
-     * @memberof HomepageSection
+     * @type {string}
+     * @memberof HomepageSectionHomepageSectionItemsDataInnerAttributes
      */
-    homepageSectionItems?: HomepageSectionHomepageSectionItems;
+    content?: string;
+    /**
+     * 
+     * @type {HomepageSectionHomepageSectionItemsDataInnerAttributesHomepageSection}
+     * @memberof HomepageSectionHomepageSectionItemsDataInnerAttributes
+     */
+    homepageSection?: HomepageSectionHomepageSectionItemsDataInnerAttributesHomepageSection;
     /**
      * 
      * @type {Date}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionHomepageSectionItemsDataInnerAttributes
      */
     createdAt?: Date;
     /**
      * 
      * @type {Date}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionHomepageSectionItemsDataInnerAttributes
      */
     updatedAt?: Date;
     /**
      * 
      * @type {Date}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionHomepageSectionItemsDataInnerAttributes
      */
     publishedAt?: Date;
     /**
      * 
      * @type {HomepageBackgroundImageDataAttributesFolderDataAttributesParent}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionHomepageSectionItemsDataInnerAttributes
      */
     createdBy?: HomepageBackgroundImageDataAttributesFolderDataAttributesParent;
     /**
      * 
      * @type {HomepageBackgroundImageDataAttributesFolderDataAttributesParent}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionHomepageSectionItemsDataInnerAttributes
      */
     updatedBy?: HomepageBackgroundImageDataAttributesFolderDataAttributesParent;
 }
 
 /**
- * Check if a given object implements the HomepageSection interface.
+ * Check if a given object implements the HomepageSectionHomepageSectionItemsDataInnerAttributes interface.
  */
-export function instanceOfHomepageSection(value: object): value is HomepageSection {
+export function instanceOfHomepageSectionHomepageSectionItemsDataInnerAttributes(value: object): value is HomepageSectionHomepageSectionItemsDataInnerAttributes {
     return true;
 }
 
-export function HomepageSectionFromJSON(json: any): HomepageSection {
-    return HomepageSectionFromJSONTyped(json, false);
+export function HomepageSectionHomepageSectionItemsDataInnerAttributesFromJSON(json: any): HomepageSectionHomepageSectionItemsDataInnerAttributes {
+    return HomepageSectionHomepageSectionItemsDataInnerAttributesFromJSONTyped(json, false);
 }
 
-export function HomepageSectionFromJSONTyped(json: any, ignoreDiscriminator: boolean): HomepageSection {
+export function HomepageSectionHomepageSectionItemsDataInnerAttributesFromJSONTyped(json: any, ignoreDiscriminator: boolean): HomepageSectionHomepageSectionItemsDataInnerAttributes {
     if (json == null) {
         return json;
     }
     return {
         
         'title': json['title'] == null ? undefined : json['title'],
-        'homepageSectionItems': json['homepage_section_items'] == null ? undefined : HomepageSectionHomepageSectionItemsFromJSON(json['homepage_section_items']),
+        'content': json['content'] == null ? undefined : json['content'],
+        'homepageSection': json['homepage_section'] == null ? undefined : HomepageSectionHomepageSectionItemsDataInnerAttributesHomepageSectionFromJSON(json['homepage_section']),
         'createdAt': json['createdAt'] == null ? undefined : (new Date(json['createdAt'])),
         'updatedAt': json['updatedAt'] == null ? undefined : (new Date(json['updatedAt'])),
         'publishedAt': json['publishedAt'] == null ? undefined : (new Date(json['publishedAt'])),
@@ -103,14 +110,15 @@ export function HomepageSectionFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function HomepageSectionToJSON(value?: HomepageSection | null): any {
+export function HomepageSectionHomepageSectionItemsDataInnerAttributesToJSON(value?: HomepageSectionHomepageSectionItemsDataInnerAttributes | null): any {
     if (value == null) {
         return value;
     }
     return {
         
         'title': value['title'],
-        'homepage_section_items': HomepageSectionHomepageSectionItemsToJSON(value['homepageSectionItems']),
+        'content': value['content'],
+        'homepage_section': HomepageSectionHomepageSectionItemsDataInnerAttributesHomepageSectionToJSON(value['homepageSection']),
         'createdAt': value['createdAt'] == null ? undefined : ((value['createdAt']).toISOString()),
         'updatedAt': value['updatedAt'] == null ? undefined : ((value['updatedAt']).toISOString()),
         'publishedAt': value['publishedAt'] == null ? undefined : ((value['publishedAt']).toISOString()),

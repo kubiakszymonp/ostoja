@@ -4,7 +4,8 @@
   "info": {
     "singularName": "homepage-section",
     "pluralName": "homepage-sections",
-    "displayName": "HomepageSection"
+    "displayName": "HomepageSection",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,12 @@
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "homepage_section_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::homepage-section-item.homepage-section-item",
+      "mappedBy": "homepage_section"
     }
   }
 }

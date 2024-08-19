@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { HomepageRequestDataBackgroundImage } from './HomepageRequestDataBackgroundImage';
+import {
+    HomepageRequestDataBackgroundImageFromJSON,
+    HomepageRequestDataBackgroundImageFromJSONTyped,
+    HomepageRequestDataBackgroundImageToJSON,
+} from './HomepageRequestDataBackgroundImage';
+
 /**
  * 
  * @export
@@ -31,6 +38,12 @@ export interface HomepageSectionItemRequestData {
      * @memberof HomepageSectionItemRequestData
      */
     content?: string;
+    /**
+     * 
+     * @type {HomepageRequestDataBackgroundImage}
+     * @memberof HomepageSectionItemRequestData
+     */
+    homepageSection?: HomepageRequestDataBackgroundImage;
 }
 
 /**
@@ -52,6 +65,7 @@ export function HomepageSectionItemRequestDataFromJSONTyped(json: any, ignoreDis
         
         'title': json['title'] == null ? undefined : json['title'],
         'content': json['content'] == null ? undefined : json['content'],
+        'homepageSection': json['homepage_section'] == null ? undefined : HomepageRequestDataBackgroundImageFromJSON(json['homepage_section']),
     };
 }
 
@@ -63,6 +77,7 @@ export function HomepageSectionItemRequestDataToJSON(value?: HomepageSectionItem
         
         'title': value['title'],
         'content': value['content'],
+        'homepage_section': HomepageRequestDataBackgroundImageToJSON(value['homepageSection']),
     };
 }
 

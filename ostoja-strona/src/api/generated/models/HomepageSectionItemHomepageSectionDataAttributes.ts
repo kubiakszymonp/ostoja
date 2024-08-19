@@ -13,12 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
-import type { HomepageSectionHomepageSectionItems } from './HomepageSectionHomepageSectionItems';
+import type { HomepageSectionItemHomepageSectionDataAttributesHomepageSectionItems } from './HomepageSectionItemHomepageSectionDataAttributesHomepageSectionItems';
 import {
-    HomepageSectionHomepageSectionItemsFromJSON,
-    HomepageSectionHomepageSectionItemsFromJSONTyped,
-    HomepageSectionHomepageSectionItemsToJSON,
-} from './HomepageSectionHomepageSectionItems';
+    HomepageSectionItemHomepageSectionDataAttributesHomepageSectionItemsFromJSON,
+    HomepageSectionItemHomepageSectionDataAttributesHomepageSectionItemsFromJSONTyped,
+    HomepageSectionItemHomepageSectionDataAttributesHomepageSectionItemsToJSON,
+} from './HomepageSectionItemHomepageSectionDataAttributesHomepageSectionItems';
 import type { HomepageBackgroundImageDataAttributesFolderDataAttributesParent } from './HomepageBackgroundImageDataAttributesFolderDataAttributesParent';
 import {
     HomepageBackgroundImageDataAttributesFolderDataAttributesParentFromJSON,
@@ -29,72 +29,72 @@ import {
 /**
  * 
  * @export
- * @interface HomepageSection
+ * @interface HomepageSectionItemHomepageSectionDataAttributes
  */
-export interface HomepageSection {
+export interface HomepageSectionItemHomepageSectionDataAttributes {
     /**
      * 
      * @type {string}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionItemHomepageSectionDataAttributes
      */
     title?: string;
     /**
      * 
-     * @type {HomepageSectionHomepageSectionItems}
-     * @memberof HomepageSection
+     * @type {HomepageSectionItemHomepageSectionDataAttributesHomepageSectionItems}
+     * @memberof HomepageSectionItemHomepageSectionDataAttributes
      */
-    homepageSectionItems?: HomepageSectionHomepageSectionItems;
+    homepageSectionItems?: HomepageSectionItemHomepageSectionDataAttributesHomepageSectionItems;
     /**
      * 
      * @type {Date}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionItemHomepageSectionDataAttributes
      */
     createdAt?: Date;
     /**
      * 
      * @type {Date}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionItemHomepageSectionDataAttributes
      */
     updatedAt?: Date;
     /**
      * 
      * @type {Date}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionItemHomepageSectionDataAttributes
      */
     publishedAt?: Date;
     /**
      * 
      * @type {HomepageBackgroundImageDataAttributesFolderDataAttributesParent}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionItemHomepageSectionDataAttributes
      */
     createdBy?: HomepageBackgroundImageDataAttributesFolderDataAttributesParent;
     /**
      * 
      * @type {HomepageBackgroundImageDataAttributesFolderDataAttributesParent}
-     * @memberof HomepageSection
+     * @memberof HomepageSectionItemHomepageSectionDataAttributes
      */
     updatedBy?: HomepageBackgroundImageDataAttributesFolderDataAttributesParent;
 }
 
 /**
- * Check if a given object implements the HomepageSection interface.
+ * Check if a given object implements the HomepageSectionItemHomepageSectionDataAttributes interface.
  */
-export function instanceOfHomepageSection(value: object): value is HomepageSection {
+export function instanceOfHomepageSectionItemHomepageSectionDataAttributes(value: object): value is HomepageSectionItemHomepageSectionDataAttributes {
     return true;
 }
 
-export function HomepageSectionFromJSON(json: any): HomepageSection {
-    return HomepageSectionFromJSONTyped(json, false);
+export function HomepageSectionItemHomepageSectionDataAttributesFromJSON(json: any): HomepageSectionItemHomepageSectionDataAttributes {
+    return HomepageSectionItemHomepageSectionDataAttributesFromJSONTyped(json, false);
 }
 
-export function HomepageSectionFromJSONTyped(json: any, ignoreDiscriminator: boolean): HomepageSection {
+export function HomepageSectionItemHomepageSectionDataAttributesFromJSONTyped(json: any, ignoreDiscriminator: boolean): HomepageSectionItemHomepageSectionDataAttributes {
     if (json == null) {
         return json;
     }
     return {
         
         'title': json['title'] == null ? undefined : json['title'],
-        'homepageSectionItems': json['homepage_section_items'] == null ? undefined : HomepageSectionHomepageSectionItemsFromJSON(json['homepage_section_items']),
+        'homepageSectionItems': json['homepage_section_items'] == null ? undefined : HomepageSectionItemHomepageSectionDataAttributesHomepageSectionItemsFromJSON(json['homepage_section_items']),
         'createdAt': json['createdAt'] == null ? undefined : (new Date(json['createdAt'])),
         'updatedAt': json['updatedAt'] == null ? undefined : (new Date(json['updatedAt'])),
         'publishedAt': json['publishedAt'] == null ? undefined : (new Date(json['publishedAt'])),
@@ -103,14 +103,14 @@ export function HomepageSectionFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function HomepageSectionToJSON(value?: HomepageSection | null): any {
+export function HomepageSectionItemHomepageSectionDataAttributesToJSON(value?: HomepageSectionItemHomepageSectionDataAttributes | null): any {
     if (value == null) {
         return value;
     }
     return {
         
         'title': value['title'],
-        'homepage_section_items': HomepageSectionHomepageSectionItemsToJSON(value['homepageSectionItems']),
+        'homepage_section_items': HomepageSectionItemHomepageSectionDataAttributesHomepageSectionItemsToJSON(value['homepageSectionItems']),
         'createdAt': value['createdAt'] == null ? undefined : ((value['createdAt']).toISOString()),
         'updatedAt': value['updatedAt'] == null ? undefined : ((value['updatedAt']).toISOString()),
         'publishedAt': value['publishedAt'] == null ? undefined : ((value['publishedAt']).toISOString()),

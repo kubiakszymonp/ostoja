@@ -8,6 +8,11 @@ import { Navbar } from "../Navbar";
 import { Section } from "../Section";
 import { Title } from "../Title";
 import styles from "./styles.module.scss";
+import {
+  HomepageSectionItem,
+  HomepageSectionItemResponse,
+  HomepageSectionListResponseDataItem,
+} from "@/api";
 
 const links = [
   { label: "Strona główna", sectionId: "main" },
@@ -21,9 +26,23 @@ export interface HomepageProps {
   title: string;
   description: string;
   backgroundImage?: any;
+  sections: HomepageSectionListResponseDataItem[];
 }
 
-export const Homepage: React.FC<HomepageProps> = ({ title, description }) => {
+export const Homepage: React.FC<HomepageProps> = ({
+  title,
+  description,
+  sections,
+}) => {
+  const links = [
+    { label: "Strona główna", sectionId: "main" },
+    ...sections.map((section) => ({
+      label: section.attributes?.title || "",
+      sectionId: String(section.id),
+    })),
+    { label: "Kontakt", sectionId: "contact" },
+  ];
+
   return (
     <div>
       <Media greaterThanOrEqual="md">
@@ -35,150 +54,26 @@ export const Homepage: React.FC<HomepageProps> = ({ title, description }) => {
       </Section>
       <div className="flex justify-center mt-10 p-4">
         <div className="container">
-          <Section id="about-us">
-            <div>
-              <h1 className="text-5xl">Aktualności</h1>
+          {sections.map((section) => (
+            <Section
+              id={String(section.id)}
+              key={section.id}
+              className={styles.section}
+            >
+              <h1 className="text-5xl"> {section.attributes?.title}</h1>
 
-              <Article
-                title="Nowa strona internetowa"
-                content="<p>
-                Witaj na naszej nowej stronie internetowej. Znajdziesz tutaj
-                informacje o naszej wspólnocie, standardach ochrony oraz
-                możliwość pobrania dokumentów. Witaj na naszej nowej stronie
-                internetowej. Znajdziesz tutaj informacje o naszej wspólnocie,
-                standardach ochrony oraz możliwość pobrania dokumentów. Witaj na
-                naszej nowej stronie internetowej. Znajdziesz tutaj informacje o
-                naszej wspólnocie, standardach ochrony oraz możliwość pobrania
-                dokumentów.
-              </p>"
-                createdAt="2021-10-10"
-              />
-              <Article
-                title="Nowa strona internetowa"
-                content="<p>
-                Witaj na naszej nowej stronie internetowej. Znajdziesz tutaj
-                informacje o naszej wspólnocie, standardach ochrony oraz
-                możliwość pobrania dokumentów. Witaj na naszej nowej stronie
-                internetowej. Znajdziesz tutaj informacje o naszej wspólnocie,
-                standardach ochrony oraz możliwość pobrania dokumentów. Witaj na
-                naszej nowej stronie internetowej. Znajdziesz tutaj informacje o
-                naszej wspólnocie, standardach ochrony oraz możliwość pobrania
-                dokumentów.
-              </p>"
-                createdAt="2021-10-10"
-              />
-              <Article
-                title="Nowa strona internetowa"
-                content="<p>
-                Witaj na naszej nowej stronie internetowej. Znajdziesz tutaj
-                informacje o naszej wspólnocie, standardach ochrony oraz
-                możliwość pobrania dokumentów. Witaj na naszej nowej stronie
-                internetowej. Znajdziesz tutaj informacje o naszej wspólnocie,
-                standardach ochrony oraz możliwość pobrania dokumentów. Witaj na
-                naszej nowej stronie internetowej. Znajdziesz tutaj informacje o
-                naszej wspólnocie, standardach ochrony oraz możliwość pobrania
-                dokumentów.
-              </p>"
-                createdAt="2021-10-10"
-              />
-            </div>
-          </Section>
-          <Section id="safety">
-            <div>
-              <h1 className="text-5xl">Aktualności</h1>
-
-              <Article
-                title="Nowa strona internetowa"
-                content="<p>
-                Witaj na naszej nowej stronie internetowej. Znajdziesz tutaj
-                informacje o naszej wspólnocie, standardach ochrony oraz
-                możliwość pobrania dokumentów. Witaj na naszej nowej stronie
-                internetowej. Znajdziesz tutaj informacje o naszej wspólnocie,
-                standardach ochrony oraz możliwość pobrania dokumentów. Witaj na
-                naszej nowej stronie internetowej. Znajdziesz tutaj informacje o
-                naszej wspólnocie, standardach ochrony oraz możliwość pobrania
-                dokumentów.
-              </p>"
-                createdAt="2021-10-10"
-              />
-              <Article
-                title="Nowa strona internetowa"
-                content="<p>
-                Witaj na naszej nowej stronie internetowej. Znajdziesz tutaj
-                informacje o naszej wspólnocie, standardach ochrony oraz
-                możliwość pobrania dokumentów. Witaj na naszej nowej stronie
-                internetowej. Znajdziesz tutaj informacje o naszej wspólnocie,
-                standardach ochrony oraz możliwość pobrania dokumentów. Witaj na
-                naszej nowej stronie internetowej. Znajdziesz tutaj informacje o
-                naszej wspólnocie, standardach ochrony oraz możliwość pobrania
-                dokumentów.
-              </p>"
-                createdAt="2021-10-10"
-              />
-              <Article
-                title="Nowa strona internetowa"
-                content="<p>
-                Witaj na naszej nowej stronie internetowej. Znajdziesz tutaj
-                informacje o naszej wspólnocie, standardach ochrony oraz
-                możliwość pobrania dokumentów. Witaj na naszej nowej stronie
-                internetowej. Znajdziesz tutaj informacje o naszej wspólnocie,
-                standardach ochrony oraz możliwość pobrania dokumentów. Witaj na
-                naszej nowej stronie internetowej. Znajdziesz tutaj informacje o
-                naszej wspólnocie, standardach ochrony oraz możliwość pobrania
-                dokumentów.
-              </p>"
-                createdAt="2021-10-10"
-              />
-            </div>
-          </Section>
-          <Section id="download">
-            <div>
-              <h1 className="text-5xl">Aktualności</h1>
-
-              <Article
-                title="Nowa strona internetowa"
-                content="<p>
-                Witaj na naszej nowej stronie internetowej. Znajdziesz tutaj
-                informacje o naszej wspólnocie, standardach ochrony oraz
-                możliwość pobrania dokumentów. Witaj na naszej nowej stronie
-                internetowej. Znajdziesz tutaj informacje o naszej wspólnocie,
-                standardach ochrony oraz możliwość pobrania dokumentów. Witaj na
-                naszej nowej stronie internetowej. Znajdziesz tutaj informacje o
-                naszej wspólnocie, standardach ochrony oraz możliwość pobrania
-                dokumentów.
-              </p>"
-                createdAt="2021-10-10"
-              />
-              <Article
-                title="Nowa strona internetowa"
-                content="<p>
-                Witaj na naszej nowej stronie internetowej. Znajdziesz tutaj
-                informacje o naszej wspólnocie, standardach ochrony oraz
-                możliwość pobrania dokumentów. Witaj na naszej nowej stronie
-                internetowej. Znajdziesz tutaj informacje o naszej wspólnocie,
-                standardach ochrony oraz możliwość pobrania dokumentów. Witaj na
-                naszej nowej stronie internetowej. Znajdziesz tutaj informacje o
-                naszej wspólnocie, standardach ochrony oraz możliwość pobrania
-                dokumentów.
-              </p>"
-                createdAt="2021-10-10"
-              />
-              <Article
-                title="Nowa strona internetowa"
-                content="<p>
-                Witaj na naszej nowej stronie internetowej. Znajdziesz tutaj
-                informacje o naszej wspólnocie, standardach ochrony oraz
-                możliwość pobrania dokumentów. Witaj na naszej nowej stronie
-                internetowej. Znajdziesz tutaj informacje o naszej wspólnocie,
-                standardach ochrony oraz możliwość pobrania dokumentów. Witaj na
-                naszej nowej stronie internetowej. Znajdziesz tutaj informacje o
-                naszej wspólnocie, standardach ochrony oraz możliwość pobrania
-                dokumentów.
-              </p>"
-                createdAt="2021-10-10"
-              />
-            </div>
-          </Section>
+              {section.attributes?.homepageSectionItems?.data?.map(
+                (sectionItem) => (
+                  <Article
+                    key={sectionItem.id}
+                    title={sectionItem.attributes?.title || ""}
+                    content={sectionItem.attributes?.content || ""}
+                    createdAt={""}
+                  />
+                )
+              )}
+            </Section>
+          ))}
         </div>
       </div>
       <Footer />

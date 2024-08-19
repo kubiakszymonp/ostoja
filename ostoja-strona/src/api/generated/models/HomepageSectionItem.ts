@@ -13,12 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
-import type { HomepageBackgroundImageDataAttributesFolderDataAttributesFilesDataInnerAttributesCreatedBy } from './HomepageBackgroundImageDataAttributesFolderDataAttributesFilesDataInnerAttributesCreatedBy';
+import type { HomepageSectionItemHomepageSection } from './HomepageSectionItemHomepageSection';
 import {
-    HomepageBackgroundImageDataAttributesFolderDataAttributesFilesDataInnerAttributesCreatedByFromJSON,
-    HomepageBackgroundImageDataAttributesFolderDataAttributesFilesDataInnerAttributesCreatedByFromJSONTyped,
-    HomepageBackgroundImageDataAttributesFolderDataAttributesFilesDataInnerAttributesCreatedByToJSON,
-} from './HomepageBackgroundImageDataAttributesFolderDataAttributesFilesDataInnerAttributesCreatedBy';
+    HomepageSectionItemHomepageSectionFromJSON,
+    HomepageSectionItemHomepageSectionFromJSONTyped,
+    HomepageSectionItemHomepageSectionToJSON,
+} from './HomepageSectionItemHomepageSection';
 import type { HomepageBackgroundImageDataAttributesFolderDataAttributesParent } from './HomepageBackgroundImageDataAttributesFolderDataAttributesParent';
 import {
     HomepageBackgroundImageDataAttributesFolderDataAttributesParentFromJSON,
@@ -46,6 +46,12 @@ export interface HomepageSectionItem {
     content?: string;
     /**
      * 
+     * @type {HomepageSectionItemHomepageSection}
+     * @memberof HomepageSectionItem
+     */
+    homepageSection?: HomepageSectionItemHomepageSection;
+    /**
+     * 
      * @type {Date}
      * @memberof HomepageSectionItem
      */
@@ -64,10 +70,10 @@ export interface HomepageSectionItem {
     publishedAt?: Date;
     /**
      * 
-     * @type {HomepageBackgroundImageDataAttributesFolderDataAttributesFilesDataInnerAttributesCreatedBy}
+     * @type {HomepageBackgroundImageDataAttributesFolderDataAttributesParent}
      * @memberof HomepageSectionItem
      */
-    createdBy?: HomepageBackgroundImageDataAttributesFolderDataAttributesFilesDataInnerAttributesCreatedBy;
+    createdBy?: HomepageBackgroundImageDataAttributesFolderDataAttributesParent;
     /**
      * 
      * @type {HomepageBackgroundImageDataAttributesFolderDataAttributesParent}
@@ -95,10 +101,11 @@ export function HomepageSectionItemFromJSONTyped(json: any, ignoreDiscriminator:
         
         'title': json['title'] == null ? undefined : json['title'],
         'content': json['content'] == null ? undefined : json['content'],
+        'homepageSection': json['homepage_section'] == null ? undefined : HomepageSectionItemHomepageSectionFromJSON(json['homepage_section']),
         'createdAt': json['createdAt'] == null ? undefined : (new Date(json['createdAt'])),
         'updatedAt': json['updatedAt'] == null ? undefined : (new Date(json['updatedAt'])),
         'publishedAt': json['publishedAt'] == null ? undefined : (new Date(json['publishedAt'])),
-        'createdBy': json['createdBy'] == null ? undefined : HomepageBackgroundImageDataAttributesFolderDataAttributesFilesDataInnerAttributesCreatedByFromJSON(json['createdBy']),
+        'createdBy': json['createdBy'] == null ? undefined : HomepageBackgroundImageDataAttributesFolderDataAttributesParentFromJSON(json['createdBy']),
         'updatedBy': json['updatedBy'] == null ? undefined : HomepageBackgroundImageDataAttributesFolderDataAttributesParentFromJSON(json['updatedBy']),
     };
 }
@@ -111,10 +118,11 @@ export function HomepageSectionItemToJSON(value?: HomepageSectionItem | null): a
         
         'title': value['title'],
         'content': value['content'],
+        'homepage_section': HomepageSectionItemHomepageSectionToJSON(value['homepageSection']),
         'createdAt': value['createdAt'] == null ? undefined : ((value['createdAt']).toISOString()),
         'updatedAt': value['updatedAt'] == null ? undefined : ((value['updatedAt']).toISOString()),
         'publishedAt': value['publishedAt'] == null ? undefined : ((value['publishedAt']).toISOString()),
-        'createdBy': HomepageBackgroundImageDataAttributesFolderDataAttributesFilesDataInnerAttributesCreatedByToJSON(value['createdBy']),
+        'createdBy': HomepageBackgroundImageDataAttributesFolderDataAttributesParentToJSON(value['createdBy']),
         'updatedBy': HomepageBackgroundImageDataAttributesFolderDataAttributesParentToJSON(value['updatedBy']),
     };
 }

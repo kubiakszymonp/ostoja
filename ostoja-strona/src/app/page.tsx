@@ -1,4 +1,4 @@
-import { HomepageApi } from "@/api";
+import { HomepageApi, HomepageSectionApi } from "@/api";
 import { Homepage } from "./components/Homepage";
 import { useApi } from "./services/useApi";
 
@@ -11,12 +11,23 @@ export default async function Home() {
     },
   });
 
+  const sectionsApi = useApi(HomepageSectionApi, {
+    next: {
+      revalidate: REVALIDATE_SECONDS,
+    },
+  });
+
   const homepageData = await homepageApi.getHomepage();
+
+  const sections = await sectionsApi.getHomepageSections({
+    populate: "*",
+  });
 
   return (
     <Homepage
       title={homepageData.data?.attributes?.title || ""}
       description={homepageData.data?.attributes?.description || ""}
+      sections={sections.data || []}
     />
   );
 }

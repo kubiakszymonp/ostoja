@@ -828,12 +828,18 @@ export interface ApiHomepageSectionHomepageSection
     singularName: 'homepage-section';
     pluralName: 'homepage-sections';
     displayName: 'HomepageSection';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
+    homepage_section_items: Attribute.Relation<
+      'api::homepage-section.homepage-section',
+      'oneToMany',
+      'api::homepage-section-item.homepage-section-item'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -873,6 +879,11 @@ export interface ApiHomepageSectionItemHomepageSectionItem
           preset: 'toolbar';
         }
       >;
+    homepage_section: Attribute.Relation<
+      'api::homepage-section-item.homepage-section-item',
+      'manyToOne',
+      'api::homepage-section.homepage-section'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

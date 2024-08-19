@@ -21,6 +21,7 @@ $navbar-link-hover-color: var(--main-orange-hover);
 
     .navbarLinkWrapper {
       position: relative;
+      cursor: pointer;
 
       .navbarLink {
         position: relative;
