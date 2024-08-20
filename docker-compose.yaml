@@ -19,12 +19,9 @@ services:
     environment:
         NODE_ENV: production
     volumes:
-      - ./ostoja-cms/config:/opt/app/config
-      - ./ostoja-cms/package.json:/opt/package.json
-      - ./ostoja-cms/yarn.lock:/opt/yarn.lock
       - ./ostoja-cms/.env:/opt/app/.env
       - ./ostoja-cms/public/uploads:/opt/app/public/uploads
-      - ./ostoja-cms/data:/app/.tmp
+      - ./ostoja-cms/data:/opt/app/.tmp
 
   nginx:
     image: nginx:alpine
