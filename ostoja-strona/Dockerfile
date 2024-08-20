@@ -14,10 +14,10 @@ RUN yarn install
 COPY . .
 
 # Build the application
-# RUN yarn build
+RUN yarn build
 
 # Expose the port on which your app will run
 EXPOSE 3000
 
 # Define the command to run your app
-# CMD ["yarn", "start"]
+CMD ["yarn", "start"]
