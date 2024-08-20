@@ -7,6 +7,8 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: production
+    networks:
+      - app-network
 
   strapi:
     build: ./ostoja-cms/
@@ -14,11 +16,13 @@ services:
       - "1337:1337"
     env_file: ./ostoja-cms/.env
     environment:
-        NODE_ENV: production
+      NODE_ENV: production
     volumes:
       - ./ostoja-cms/.env:/opt/app/.env
       - ./ostoja-cms/public/uploads:/opt/app/public/uploads
       - ./ostoja-cms/data:/opt/app/.tmp
+    networks:
+      - app-network
 
   nginx:
     image: nginx:alpine
@@ -31,3 +35,9 @@ services:
     depends_on:
       - nextjs
       - strapi
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
