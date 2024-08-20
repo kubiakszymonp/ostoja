@@ -2,7 +2,7 @@ import { BaseAPI, Configuration, HomepageApi } from "@/api";
 
 type Constructor<T = {}> = new (...args: any[]) => T;
 
-const BASE_PATH = "http://0.0.0.0:1337/api";
+const BASE_PATH = "http://strapi:1337/api";
 
 export const useApi = <T extends BaseAPI>(
   api: Constructor<T>,
