@@ -20,4 +20,4 @@ USER node
 
 RUN ["yarn", "build"]
 EXPOSE 1337
-CMD ["whoami && ls -l /opt/app/src/api/homepage/documentation/1.0.0/homepage.json"]
+CMD ["sh", "-c", "ls -l /opt/app/src/api/homepage/documentation/1.0.0/homepage.json"]
