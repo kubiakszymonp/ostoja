@@ -12,9 +12,12 @@ ENV PATH /opt/node_modules/.bin:$PATH
 
 WORKDIR /opt/app
 COPY . .
-RUN chown -R node:node /opt/app
+
 RUN chmod -R 755 /opt/app
+
+RUN chown -R node:node /opt/app
 USER node
+
 RUN ["yarn", "build"]
 EXPOSE 1337
-CMD ["yarn", "start"]
+CMD ["whoami && ls -l /opt/app/src/api/homepage/documentation/1.0.0/homepage.json"]
