@@ -13,11 +13,13 @@ ENV PATH /opt/node_modules/.bin:$PATH
 WORKDIR /opt/app
 COPY . .
 
-RUN chmod -R 755 /opt/app
 
-RUN chown -R node:node /opt/app
-USER node
 
 RUN ["yarn", "build"]
 EXPOSE 1337
+
+RUN chmod -R 755 /opt/app
+RUN chown -R node:node /opt/app
+USER node
+
 CMD ["sh", "-c", "ls -l /opt/app/src/api/homepage/documentation/1.0.0/homepage.json"]
