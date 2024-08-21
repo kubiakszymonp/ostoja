@@ -38,15 +38,6 @@ services:
       - strapi
     networks:
       - app-network
-  # basic-server:
-  #   image: alpine
-  #   command: sh -c "while true; do curl strapi:1337/api/homepage; sleep 10; done"
-  #   environment:
-  #     NODE_ENV: production
-  #     API_URL: http://strapi:1337
-  #   networks:
-  #     - app-network
-
 
 networks:
   app-network:
