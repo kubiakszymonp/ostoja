@@ -2,7 +2,7 @@ import { HomepageApi, HomepageSectionApi } from "@/api";
 import { Homepage } from "./components/Homepage";
 import { useApi } from "./services/useApi";
 
-const REVALIDATE_SECONDS = 60;
+const REVALIDATE_SECONDS = 30;
 
 export default async function Home() {
   const homepageApi = useApi(HomepageApi, {
@@ -17,17 +17,21 @@ export default async function Home() {
     },
   });
 
-  const homepageData = await homepageApi.getHomepage();
+  try {
+    const homepageData = await homepageApi.getHomepage();
 
-  const sections = await sectionsApi.getHomepageSections({
-    populate: "*",
-  });
+    const sections = await sectionsApi.getHomepageSections({
+      populate: "*",
+    });
 
-  return (
-    <Homepage
-      title={homepageData.data?.attributes?.title || ""}
-      description={homepageData.data?.attributes?.description || ""}
-      sections={sections.data || []}
-    />
-  );
+    return (
+      <Homepage
+        title={homepageData.data?.attributes?.title || ""}
+        description={homepageData.data?.attributes?.description || ""}
+        sections={sections.data || []}
+      />
+    );
+  } catch (error) {
+    return <div className="my-10 text-xl">Prace serwisowe. Spróbuj ponownie później</div>;
+  }
 }

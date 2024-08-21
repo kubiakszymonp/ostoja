@@ -2,7 +2,7 @@ import { BaseAPI, Configuration, HomepageApi } from "@/api";
 
 type Constructor<T = {}> = new (...args: any[]) => T;
 
-const BASE_PATH = "http://strapi:1337/api";
+const BASE_PATH = `${process.env.NEXT_PUBLIC_API_URL}/api`;
 
 export const useApi = <T extends BaseAPI>(
   api: Constructor<T>,
@@ -15,7 +15,7 @@ export const useApi = <T extends BaseAPI>(
   const customFetch: typeof fetch = async (input, init) => {
     const modifiedInit: RequestInit = {
       ...init,
-      ...fetchOptions 
+      ...fetchOptions,
     };
     return fetch(input, modifiedInit);
   };
