@@ -3,7 +3,10 @@ import cx from "classnames";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 
-export const Footer = () => {
+export const Footer: React.FC<{
+  email: string;
+  phone: string;
+}> = ({ email, phone }) => {
   return (
     <footer
       className={cx(styles.footer, "transition duration-500")}
@@ -46,8 +49,8 @@ export const Footer = () => {
           </div>
           <div className={styles.contactInfo}>
             <h4>Kontakt</h4>
-            <p>email: wczasorekolekcjeostoja@gmail.com</p>
-            <p>telefon: +48 111 222 333</p>
+            <p>email: {email}</p>
+            <p>telefon: {phone}</p>
           </div>
         </div>
       </div>

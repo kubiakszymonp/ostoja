@@ -44,6 +44,18 @@ export interface HomepageRequestData {
      * @memberof HomepageRequestData
      */
     backgroundImage?: HomepageRequestDataBackgroundImage;
+    /**
+     * 
+     * @type {string}
+     * @memberof HomepageRequestData
+     */
+    phone?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HomepageRequestData
+     */
+    email?: string;
 }
 
 /**
@@ -66,6 +78,8 @@ export function HomepageRequestDataFromJSONTyped(json: any, ignoreDiscriminator:
         'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'backgroundImage': json['backgroundImage'] == null ? undefined : HomepageRequestDataBackgroundImageFromJSON(json['backgroundImage']),
+        'phone': json['phone'] == null ? undefined : json['phone'],
+        'email': json['email'] == null ? undefined : json['email'],
     };
 }
 
@@ -78,6 +92,8 @@ export function HomepageRequestDataToJSON(value?: HomepageRequestData | null): a
         'title': value['title'],
         'description': value['description'],
         'backgroundImage': HomepageRequestDataBackgroundImageToJSON(value['backgroundImage']),
+        'phone': value['phone'],
+        'email': value['email'],
     };
 }
 

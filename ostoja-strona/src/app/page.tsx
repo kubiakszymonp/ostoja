@@ -29,9 +29,38 @@ export default async function Home() {
         title={homepageData.data?.attributes?.title || ""}
         description={homepageData.data?.attributes?.description || ""}
         sections={sections.data || []}
+        email={homepageData.data?.attributes?.email || ""}
+        phone={homepageData.data?.attributes?.phone || ""}
       />
     );
   } catch (error) {
-    return <div className="my-10 text-xl">Prace serwisowe. Spróbuj ponownie później</div>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          flexDirection: "column",
+          letterSpacing: "-1px",
+        }}
+      >
+        <span
+          style={{
+            fontSize: "3rem",
+            fontWeight: "bold",
+          }}
+        >
+          Prace serwisowe.
+        </span>
+        <span
+          style={{
+            fontSize: "2rem",
+          }}
+        >
+          Spróbuj ponownie później
+        </span>
+      </div>
+    );
   }
 }

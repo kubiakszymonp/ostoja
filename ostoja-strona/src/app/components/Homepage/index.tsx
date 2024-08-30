@@ -27,12 +27,16 @@ export interface HomepageProps {
   description: string;
   backgroundImage?: any;
   sections: HomepageSectionListResponseDataItem[];
+  phone: string;
+  email: string;
 }
 
 export const Homepage: React.FC<HomepageProps> = ({
   title,
   description,
   sections,
+  phone,
+  email,
 }) => {
   const links = [
     { label: "Strona główna", sectionId: "main" },
@@ -76,7 +80,7 @@ export const Homepage: React.FC<HomepageProps> = ({
           ))}
         </div>
       </div>
-      <Footer />
+      <Footer email={email} phone={phone} />
     </div>
   );
 };

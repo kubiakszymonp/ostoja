@@ -803,6 +803,8 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     title: Attribute.String;
     description: Attribute.String;
     backgroundImage: Attribute.Media<'images'>;
+    phone: Attribute.String;
+    email: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
