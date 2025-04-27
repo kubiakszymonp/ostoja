@@ -1,0 +1,3 @@
+[submodule "mediacja"]
+	path = mediacja
+	url = https://github.com/kubiakszymonp/mediacja.git
