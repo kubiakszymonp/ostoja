@@ -10,6 +10,16 @@ services:
     networks:
       - app-network
 
+  mediacja:
+    build: ./mediacja/
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: production
+    networks:
+      - app-network
+    profiles:
+      - mediacja
 
   strapi:
     build: ./ostoja-cms/
