@@ -32,7 +32,7 @@ services:
     volumes:
       - ./ostoja-cms/.env:/opt/app/.env
       - ./ostoja-cms/public/uploads:/opt/app/public/uploads
-      - ./ostoja-cms/data:/opt/app/.tmp
+      - ./ostoja-cms/data:/opt/app/data
     networks:
       - app-network
 
