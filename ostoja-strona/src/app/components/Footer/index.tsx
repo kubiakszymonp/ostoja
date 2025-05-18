@@ -6,7 +6,8 @@ import Image from "next/image";
 export const Footer: React.FC<{
   email: string;
   phone: string;
-}> = ({ email, phone }) => {
+  bankAccount: string;
+}> = ({ email, phone, bankAccount }) => {
   return (
     <footer
       className={cx(styles.footer, "transition duration-500")}
@@ -49,8 +50,9 @@ export const Footer: React.FC<{
           </div>
           <div className={styles.contactInfo}>
             <h4>Kontakt</h4>
-            <p>email: {email}</p>
-            <p>telefon: {phone}</p>
+            <p>Email: {email}</p>
+            <p>Telefon: {phone}</p>
+            <p>Numer konta bankowego: {bankAccount}</p>
           </div>
         </div>
       </div>

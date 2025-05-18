@@ -29,6 +29,7 @@ export interface HomepageProps {
   sections: HomepageSectionListResponseDataItem[];
   phone: string;
   email: string;
+  bankAccount: string;
 }
 
 export const Homepage: React.FC<HomepageProps> = ({
@@ -37,6 +38,7 @@ export const Homepage: React.FC<HomepageProps> = ({
   sections,
   phone,
   email,
+  bankAccount,
 }) => {
   const links = [
     { label: "Strona główna", sectionId: "main" },
@@ -80,7 +82,7 @@ export const Homepage: React.FC<HomepageProps> = ({
           ))}
         </div>
       </div>
-      <Footer email={email} phone={phone} />
+      <Footer email={email} phone={phone} bankAccount={bankAccount} />
     </div>
   );
 };

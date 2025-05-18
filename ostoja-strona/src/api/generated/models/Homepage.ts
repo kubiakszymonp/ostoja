@@ -64,6 +64,12 @@ export interface Homepage {
     email?: string;
     /**
      * 
+     * @type {string}
+     * @memberof Homepage
+     */
+    bankAccount?: string;
+    /**
+     * 
      * @type {Date}
      * @memberof Homepage
      */
@@ -116,6 +122,7 @@ export function HomepageFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'backgroundImage': json['backgroundImage'] == null ? undefined : HomepageBackgroundImageFromJSON(json['backgroundImage']),
         'phone': json['phone'] == null ? undefined : json['phone'],
         'email': json['email'] == null ? undefined : json['email'],
+        'bankAccount': json['bankAccount'] == null ? undefined : json['bankAccount'],
         'createdAt': json['createdAt'] == null ? undefined : (new Date(json['createdAt'])),
         'updatedAt': json['updatedAt'] == null ? undefined : (new Date(json['updatedAt'])),
         'publishedAt': json['publishedAt'] == null ? undefined : (new Date(json['publishedAt'])),
@@ -135,6 +142,7 @@ export function HomepageToJSON(value?: Homepage | null): any {
         'backgroundImage': HomepageBackgroundImageToJSON(value['backgroundImage']),
         'phone': value['phone'],
         'email': value['email'],
+        'bankAccount': value['bankAccount'],
         'createdAt': value['createdAt'] == null ? undefined : ((value['createdAt']).toISOString()),
         'updatedAt': value['updatedAt'] == null ? undefined : ((value['updatedAt']).toISOString()),
         'publishedAt': value['publishedAt'] == null ? undefined : ((value['publishedAt']).toISOString()),

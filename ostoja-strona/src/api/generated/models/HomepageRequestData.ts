@@ -56,6 +56,12 @@ export interface HomepageRequestData {
      * @memberof HomepageRequestData
      */
     email?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HomepageRequestData
+     */
+    bankAccount?: string;
 }
 
 /**
@@ -80,6 +86,7 @@ export function HomepageRequestDataFromJSONTyped(json: any, ignoreDiscriminator:
         'backgroundImage': json['backgroundImage'] == null ? undefined : HomepageRequestDataBackgroundImageFromJSON(json['backgroundImage']),
         'phone': json['phone'] == null ? undefined : json['phone'],
         'email': json['email'] == null ? undefined : json['email'],
+        'bankAccount': json['bankAccount'] == null ? undefined : json['bankAccount'],
     };
 }
 
@@ -94,6 +101,7 @@ export function HomepageRequestDataToJSON(value?: HomepageRequestData | null): a
         'backgroundImage': HomepageRequestDataBackgroundImageToJSON(value['backgroundImage']),
         'phone': value['phone'],
         'email': value['email'],
+        'bankAccount': value['bankAccount'],
     };
 }
 

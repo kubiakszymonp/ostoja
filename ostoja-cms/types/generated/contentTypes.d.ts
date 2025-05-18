@@ -805,6 +805,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     backgroundImage: Attribute.Media<'images'>;
     phone: Attribute.String;
     email: Attribute.String;
+    bankAccount: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -31,6 +31,7 @@ export default async function Home() {
         sections={sections.data || []}
         email={homepageData.data?.attributes?.email || ""}
         phone={homepageData.data?.attributes?.phone || ""}
+        bankAccount={homepageData.data?.attributes?.bankAccount || ""}
       />
     );
   } catch (error) {
