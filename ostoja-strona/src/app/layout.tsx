@@ -22,6 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>Stowarzyszenie Ostoja</head>
       <body className={`${PermanentMarker.variable} ${DMSans.variable}`}>
         {children}
       </body>
