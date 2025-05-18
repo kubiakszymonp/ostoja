@@ -1,5 +1,10 @@
 import "./globals.css";
 import { DM_Sans, Permanent_Marker } from "next/font/google";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Stowarzyszenie Ostoja",
+};
 
 export const PermanentMarker = Permanent_Marker({
   weight: "400",
@@ -21,10 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <title>Stowarzyszenie Ostoja</title>
-      </head>
+    <html lang="pl">
       <body className={`${PermanentMarker.variable} ${DMSans.variable}`}>
         {children}
       </body>

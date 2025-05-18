@@ -60,7 +60,7 @@ export const Homepage: React.FC<HomepageProps> = ({
       </Section>
       <div className="flex justify-center mt-10 p-4">
         <div className="container">
-          {sections.map((section) => (
+          {sections.reverse().map((section) => (
             <Section
               id={String(section.id)}
               key={section.id}
