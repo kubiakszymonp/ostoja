@@ -16,5 +16,5 @@ RUN chown -R node:node /opt/app
 RUN chmod -R 755 /opt/app
 USER node
 RUN ["yarn", "build"]
-EXPOSE 1337
+EXPOSE 2337
 CMD ["yarn", "start"]

@@ -2,3 +2,5 @@
 *.pub
 *.env
 *.db
+certs
+**/public/uploads/**.*

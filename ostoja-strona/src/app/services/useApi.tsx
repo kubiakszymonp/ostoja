@@ -1,8 +1,9 @@
 import { BaseAPI, Configuration, HomepageApi } from "@/api";
+import { Environment, getEnvironment } from "@/environment";
 
 type Constructor<T = {}> = new (...args: any[]) => T;
 
-const BASE_PATH = `${process.env.NEXT_PUBLIC_API_URL}/api`;
+const envConfig = getEnvironment();
 
 export const useApi = <T extends BaseAPI>(
   api: Constructor<T>,
@@ -22,7 +23,7 @@ export const useApi = <T extends BaseAPI>(
 
   // Create an instance of the API class with the custom fetch function
   const instance = new api(
-    new Configuration({ fetchApi: customFetch, basePath: BASE_PATH })
+    new Configuration({ fetchApi: customFetch, basePath: envConfig.apiUrl })
   );
   return instance;
 };
