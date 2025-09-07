@@ -16,4 +16,4 @@ RUN chmod -R 755 /opt/app
 USER node
 RUN ["yarn", "build"]
 EXPOSE 2337
-CMD ["yarn", "start"]
+CMD ["yarn", "develop"]
