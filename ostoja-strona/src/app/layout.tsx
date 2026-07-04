@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Stowarzyszenie Ostoja",
+  description:
+    "Wspólnota, która łączy osoby niepełnosprawne, ich opiekunów z Bogiem, tworząc więzi oparte na wzajemnym wsparciu i duchowej bliskości.",
 };
 
 export const PermanentMarker = Permanent_Marker({

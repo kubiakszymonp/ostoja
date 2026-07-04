@@ -1,94 +1,77 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
-import cx from "classnames";
 import { motion } from "framer-motion";
-import Media from "../Media";
 import React from "react";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-};
+const fadeInUp = (delay = 0) => ({
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay, ease: "easeOut" },
+  },
+});
 
 interface ITitleProps {
   title: string;
   description: string;
 }
 
-export const Title: React.FC<ITitleProps> = ({ title, description }) => {
+export const Title: React.FC<ITitleProps> = ({ description }) => {
   return (
-    <div>
-      <div className={cx(styles.container, "shadow-lg")}>
-        <div className="flex justify-center flex-col items-center">
-          <div
-            className={cx(styles.titleRow, "flex items-center justify-between")}
-          >
-            <Media greaterThanOrEqual="md">
-              <Image
-                src={"/images/logo3.png"}
-                width={330}
-                height={330}
-                alt=""
-                className={styles.img}
-              />
-            </Media>
-            <Media lessThan="md">
-              <Image
-                src={"/images/logo3.png"}
-                width={200}
-                height={200}
-                alt=""
-                className={styles.img}
-              />
-            </Media>
-
-            <motion.h1
-              className={styles.titleMain}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-            >
-              Wspólnota
-              <div className={styles.titleSub}>Ostoja</div>
-            </motion.h1>
-          </div>
-          <motion.h6
-            className={styles.description}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.3, delay: 0.5 },
-              },
-            }}
-          >
-            {description}
-          </motion.h6>
-
+    <div className={styles.hero}>
+      <div className={styles.heroInner}>
+        <div className={styles.titleRow}>
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.3, delay: 0.8 },
-              },
-            }}
-          ></motion.div>
+            variants={fadeInUp(0)}
+          >
+            <Image
+              src="/images/logo3.png"
+              width={300}
+              height={300}
+              alt="Logo Stowarzyszenia Ostoja"
+              className={styles.logo}
+              priority
+            />
+          </motion.div>
 
-          <div className={styles.galleryContainer}></div>
+          <motion.h1
+            className={styles.titleMain}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp(0.15)}
+          >
+            Wspólnota
+            <span className={styles.titleSub}>Ostoja</span>
+          </motion.h1>
         </div>
 
-        <div className={styles.divider}></div>
+        <motion.p
+          className={styles.description}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp(0.4)}
+        >
+          {description}
+        </motion.p>
       </div>
+
+      <svg
+        className={styles.wave}
+        viewBox="0 0 1440 64"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M0,40 C240,64 480,8 720,20 C960,32 1200,60 1440,28 L1440,64 L0,64 Z"
+          fill="var(--paper)"
+        />
+      </svg>
     </div>
   );
 };

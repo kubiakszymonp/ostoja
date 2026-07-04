@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import cx from "classnames";
 import styles from "./styles.module.scss";
 
-const NAVBAR_OFFSET = 150;
+const NAVBAR_OFFSET = 88;
 
 export interface ITitleContainerProps {
   links: {
@@ -15,9 +16,13 @@ export const Navbar: React.FC<ITitleContainerProps> = ({ links }) => {
   const [activeSection, setActiveSection] = useState<string>(
     links[0].sectionId
   );
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleScroll = () => {
-    let scrollPos = window.scrollY + 100 + NAVBAR_OFFSET;
+    setScrolled(window.scrollY > 8);
+
+    const scrollPos = window.scrollY + NAVBAR_OFFSET + 100;
 
     links.forEach((link) => {
       const section = document.getElementById(link.sectionId);
@@ -36,36 +41,74 @@ export const Navbar: React.FC<ITitleContainerProps> = ({ links }) => {
     const section = document.getElementById(href);
     if (section) {
       window.scrollTo({
-        top: section.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET,
+        top:
+          section.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET,
         behavior: "smooth",
       });
       setActiveSection(href);
     }
+    setMenuOpen(false);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className={cx(styles.navbarContainer, "shadow-lg")}>
-      <div className={styles.navbarLinks}>
-        {links.map((link, index) => (
-          <span
-            key={index}
-            className={cx(styles.navbarLinkWrapper, {
-              [styles.navbarLinkWrapper__active]:
-                activeSection === link.sectionId,
-            })}
-            onClick={() => handleClick(link.sectionId)}
-          >
-            <a className={styles.navbarLink}>{link.label}</a>
-          </span>
-        ))}
+    <header
+      className={cx(styles.navbar, { [styles.navbarScrolled]: scrolled })}
+    >
+      <div className={styles.inner}>
+        <button
+          type="button"
+          className={styles.brand}
+          onClick={() => handleClick("main")}
+        >
+          <Image
+            src="/images/logo3.png"
+            alt=""
+            width={40}
+            height={40}
+            className={styles.brandLogo}
+          />
+          <span className={styles.brandName}>Wspólnota Ostoja</span>
+        </button>
+
+        <nav
+          className={cx(styles.links, { [styles.linksOpen]: menuOpen })}
+          aria-label="Nawigacja"
+        >
+          {links.map((link) => (
+            <button
+              type="button"
+              key={link.sectionId}
+              className={cx(styles.link, {
+                [styles.linkActive]: activeSection === link.sectionId,
+              })}
+              onClick={() => handleClick(link.sectionId)}
+            >
+              {link.label}
+            </button>
+          ))}
+        </nav>
+
+        <button
+          type="button"
+          className={cx(styles.burger, { [styles.burgerOpen]: menuOpen })}
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"}
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
-    </div>
+    </header>
   );
 };

@@ -1,3 +1,42 @@
-.titleSection {
-  padding: 0;
+.page {
+  padding-top: var(--navbar-height);
+}
+
+.main {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 1rem 3.5rem;
+    gap: 3.5rem;
+  }
+}
+
+.sectionTitle {
+  position: relative;
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.85rem;
+  margin-bottom: 2rem;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 4.5rem;
+    height: 5px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--main-yellow), var(--main-orange));
+  }
+}
+
+.sectionItems {
+  display: grid;
+  gap: 2rem;
 }

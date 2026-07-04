@@ -3,7 +3,6 @@
 import React from "react";
 import { Article } from "../Article";
 import { Footer } from "../Footer";
-import Media from "../Media";
 import { Navbar } from "../Navbar";
 import { Section } from "../Section";
 import { Title } from "../Title";
@@ -37,36 +36,31 @@ export const Homepage: React.FC<HomepageProps> = ({
   ];
 
   return (
-    <div>
-      <Media greaterThanOrEqual="md">
-        <Navbar links={links} />
-      </Media>
+    <div className={styles.page}>
+      <Navbar links={links} />
 
-      <Section id="main" className={styles.titleSection}>
+      <Section id="main">
         <Title description={description} title={title} />
       </Section>
-      <div className="flex justify-center mt-10 p-4">
-        <div className="container">
-          {sections.map((section) => (
-            <Section
-              id={String(section.id)}
-              key={section.id}
-              className={styles.section}
-            >
-              <h1 className="text-5xl"> {section.title}</h1>
 
+      <main className={styles.main}>
+        {sections.map((section) => (
+          <Section id={String(section.id)} key={section.id}>
+            <h2 className={styles.sectionTitle}>{section.title}</h2>
+
+            <div className={styles.sectionItems}>
               {section.items.map((item) => (
                 <Article
                   key={item.id}
                   title={item.title}
                   content={item.content}
-                  createdAt={""}
                 />
               ))}
-            </Section>
-          ))}
-        </div>
-      </div>
+            </div>
+          </Section>
+        ))}
+      </main>
+
       <Footer email={email} phone={phone} bankAccount={bankAccount} />
     </div>
   );
