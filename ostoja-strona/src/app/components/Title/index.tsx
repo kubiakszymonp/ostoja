@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
-import { Button } from "../Button";
 import cx from "classnames";
 import { motion } from "framer-motion";
 import Media from "../Media";

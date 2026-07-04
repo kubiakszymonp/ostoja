@@ -9,20 +9,6 @@ services:
       NODE_ENV: production
     networks:
       - app-network
-      
-  strapi:
-    build: ./ostoja-cms/
-    ports:
-      - "2337:2337"
-    env_file: ./ostoja-cms/.env
-    environment:
-      NODE_ENV: production
-    volumes:
-      - ./ostoja-cms/.env:/opt/app/.env
-      - ./ostoja-cms/public/uploads:/opt/app/public/uploads
-      - ./ostoja-cms/data:/opt/app/data
-    networks:
-      - app-network
 
 networks:
   app-network:

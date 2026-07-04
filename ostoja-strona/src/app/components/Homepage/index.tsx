@@ -8,25 +8,12 @@ import { Navbar } from "../Navbar";
 import { Section } from "../Section";
 import { Title } from "../Title";
 import styles from "./styles.module.scss";
-import {
-  HomepageSectionItem,
-  HomepageSectionItemResponse,
-  HomepageSectionListResponseDataItem,
-} from "@/api";
-
-const links = [
-  { label: "Strona główna", sectionId: "main" },
-  { label: "Kim jesteśmy", sectionId: "about-us" },
-  { label: "Standardy ochrony", sectionId: "safety" },
-  { label: "Do pobrania", sectionId: "download" },
-  { label: "Kontakt", sectionId: "contact" },
-];
+import { HomepageSection } from "@/data/homepage";
 
 export interface HomepageProps {
   title: string;
   description: string;
-  backgroundImage?: any;
-  sections: HomepageSectionListResponseDataItem[];
+  sections: HomepageSection[];
   phone: string;
   email: string;
   bankAccount: string;
@@ -43,7 +30,7 @@ export const Homepage: React.FC<HomepageProps> = ({
   const links = [
     { label: "Strona główna", sectionId: "main" },
     ...sections.map((section) => ({
-      label: section.attributes?.title || "",
+      label: section.title,
       sectionId: String(section.id),
     })),
     { label: "Kontakt", sectionId: "contact" },
@@ -66,18 +53,16 @@ export const Homepage: React.FC<HomepageProps> = ({
               key={section.id}
               className={styles.section}
             >
-              <h1 className="text-5xl"> {section.attributes?.title}</h1>
+              <h1 className="text-5xl"> {section.title}</h1>
 
-              {section.attributes?.homepageSectionItems?.data
-                ?.reverse()
-                .map((sectionItem) => (
-                  <Article
-                    key={sectionItem.id}
-                    title={sectionItem.attributes?.title || ""}
-                    content={sectionItem.attributes?.content || ""}
-                    createdAt={""}
-                  />
-                ))}
+              {section.items.map((item) => (
+                <Article
+                  key={item.id}
+                  title={item.title}
+                  content={item.content}
+                  createdAt={""}
+                />
+              ))}
             </Section>
           ))}
         </div>
